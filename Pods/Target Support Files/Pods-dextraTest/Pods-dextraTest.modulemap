@@ -1,0 +1,6 @@
+framework module Pods_dextraTest {
+  umbrella header "Pods-dextraTest-umbrella.h"
+
+  export *
+  module * { export * }
+}

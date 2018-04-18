@@ -14,6 +14,7 @@
 		2F8B5A0C208781D900CA0142 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F8B5A0A208781D900CA0142 /* LaunchScreen.storyboard */; };
 		2F8B5A17208781DA00CA0142 /* dextraTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8B5A16208781DA00CA0142 /* dextraTestTests.swift */; };
 		2F8B5A22208781DA00CA0142 /* dextraTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8B5A21208781DA00CA0142 /* dextraTestUITests.swift */; };
+		E0363E876770D29EC2932286 /* Pods_dextraTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F8747ECFF1F84197B4B2F2 /* Pods_dextraTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,9 @@
 		2F8B5A1D208781DA00CA0142 /* dextraTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dextraTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F8B5A21208781DA00CA0142 /* dextraTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dextraTestUITests.swift; sourceTree = "<group>"; };
 		2F8B5A23208781DA00CA0142 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48E58732DE0E1DBE94250C93 /* Pods-dextraTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dextraTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dextraTest/Pods-dextraTest.debug.xcconfig"; sourceTree = "<group>"; };
+		69F8747ECFF1F84197B4B2F2 /* Pods_dextraTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dextraTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6B50707EE75BD2A5F95E927 /* Pods-dextraTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dextraTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-dextraTest/Pods-dextraTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0363E876770D29EC2932286 /* Pods_dextraTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +86,8 @@
 				2F8B5A15208781DA00CA0142 /* dextraTestTests */,
 				2F8B5A20208781DA00CA0142 /* dextraTestUITests */,
 				2F8B59FF208781D800CA0142 /* Products */,
+				659B4925DAAD666CD1185B21 /* Pods */,
+				5E58390CF813FC1627C4DB2C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +132,23 @@
 			path = dextraTestUITests;
 			sourceTree = "<group>";
 		};
+		5E58390CF813FC1627C4DB2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				69F8747ECFF1F84197B4B2F2 /* Pods_dextraTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		659B4925DAAD666CD1185B21 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				48E58732DE0E1DBE94250C93 /* Pods-dextraTest.debug.xcconfig */,
+				D6B50707EE75BD2A5F95E927 /* Pods-dextraTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +156,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F8B5A26208781DA00CA0142 /* Build configuration list for PBXNativeTarget "dextraTest" */;
 			buildPhases = (
+				10E7B82E88DBE6DB3C8C0250 /* [CP] Check Pods Manifest.lock */,
 				2F8B59FA208781D800CA0142 /* Sources */,
 				2F8B59FB208781D800CA0142 /* Frameworks */,
 				2F8B59FC208781D800CA0142 /* Resources */,
+				B16CCA287FB8609DB02EDEF3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -250,6 +276,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10E7B82E88DBE6DB3C8C0250 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-dextraTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B16CCA287FB8609DB02EDEF3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-dextraTest/Pods-dextraTest-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-dextraTest/Pods-dextraTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2F8B59FA208781D800CA0142 /* Sources */ = {
@@ -428,14 +493,12 @@
 		};
 		2F8B5A27208781DA00CA0142 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48E58732DE0E1DBE94250C93 /* Pods-dextraTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = dextraTest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattcbr.dextraTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -445,14 +508,12 @@
 		};
 		2F8B5A28208781DA00CA0142 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6B50707EE75BD2A5F95E927 /* Pods-dextraTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = dextraTest/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattcbr.dextraTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -467,11 +528,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = dextraTestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattcbr.dextraTestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -487,11 +544,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = dextraTestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattcbr.dextraTestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -506,11 +559,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = dextraTestUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattcbr.dextraTestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -525,11 +574,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = dextraTestUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattcbr.dextraTestUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
