@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -107,6 +108,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="repoNameLabel" destination="z2o-Nc-FXF" id="THj-1d-ZXB"/>
+                                    <segue destination="gW8-SX-1SM" kind="show" id="j8p-6L-hhv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -120,6 +122,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jhh-hl-be5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1717.5999999999999" y="129.98500749625188"/>
+        </scene>
+        <!--Availability View Controller-->
+        <scene sceneID="OfU-1M-arl">
+            <objects>
+                <viewController id="gW8-SX-1SM" customClass="AvailabilityViewController" customModule="dextraTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PER-YS-GoK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pet-Fi-8kI">
+                                <rect key="frame" x="16" y="117" width="343" height="145"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9cZ-cZ-Hr7">
+                                <rect key="frame" x="122" y="318" width="131" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Abrir no navegador"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="gW8-SX-1SM" eventType="touchUpInside" id="ALv-G7-wwi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="tSd-1P-gKf"/>
+                    </view>
+                    <connections>
+                        <outlet property="availabilityLabel" destination="pet-Fi-8kI" id="Oy6-uT-k7w"/>
+                        <outlet property="openInTheNavigatorButton" destination="9cZ-cZ-Hr7" id="fSk-SR-wZf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0qg-yn-Jxd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2468" y="130.88455772113943"/>
         </scene>
     </scenes>
 </document>

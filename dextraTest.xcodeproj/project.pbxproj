@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F64C87920890F1200320911 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64C87820890F1200320911 /* DetailTableViewController.swift */; };
 		2F64C87B2089197200320911 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64C87A2089197200320911 /* DetailTableViewCell.swift */; };
+		2F64C87D2089331C00320911 /* AvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F64C87C2089331C00320911 /* AvailabilityViewController.swift */; };
 		2F8B5A02208781D800CA0142 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8B5A01208781D800CA0142 /* AppDelegate.swift */; };
 		2F8B5A07208781D800CA0142 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F8B5A05208781D800CA0142 /* Main.storyboard */; };
 		2F8B5A09208781D900CA0142 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F8B5A08208781D900CA0142 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		2F64C87820890F1200320911 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		2F64C87A2089197200320911 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		2F64C87C2089331C00320911 /* AvailabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityViewController.swift; sourceTree = "<group>"; };
 		2F8B59FE208781D800CA0142 /* dextraTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dextraTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F8B5A01208781D800CA0142 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F8B5A06208781D800CA0142 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				2FF34C492087B935009B0A2E /* PeopleTableViewController.swift */,
 				2F64C87A2089197200320911 /* DetailTableViewCell.swift */,
 				2F64C87820890F1200320911 /* DetailTableViewController.swift */,
+				2F64C87C2089331C00320911 /* AvailabilityViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				2F64C87920890F1200320911 /* DetailTableViewController.swift in Sources */,
 				2FF34C482087B49F009B0A2E /* PersonTableViewCell.swift in Sources */,
 				2FF34C4A2087B935009B0A2E /* PeopleTableViewController.swift in Sources */,
+				2F64C87D2089331C00320911 /* AvailabilityViewController.swift in Sources */,
 				2FF34C4520878C17009B0A2E /* Repositories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
