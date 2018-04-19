@@ -50,7 +50,7 @@ class Parser {
                                 thumbPath: thumbpath,
                                 repoCount: repoCount!,
                                 repos: repoArray)
-            
+
             peopleArray.append(person)
         }
        return peopleArray

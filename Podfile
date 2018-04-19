@@ -5,4 +5,5 @@ use_frameworks!
 
 target 'dextraTest' do
   pod 'Alamofire'
+  pod 'AlamofireImage'
 end

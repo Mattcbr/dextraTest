@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class PeopleTableViewController: UITableViewController, RequestDelegate {
     
@@ -58,6 +60,14 @@ class PeopleTableViewController: UITableViewController, RequestDelegate {
         }
         
         cell.repoCountLabel.text = repoText
+        
+        Alamofire.request((person?.thumbnailPath)!).responseImage { response in
+            print("\nImage Request Response:\n\(response)")
+            
+            if let image = response.result.value {
+                cell.personImage.image = image
+            }
+        }
         
         return cell
     }
