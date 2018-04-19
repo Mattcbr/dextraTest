@@ -9,9 +9,8 @@
 import Foundation
 
 class Parser {
-    let tableViewController = PeopleTableViewController()
     
-    func parseInfo(response: Any){
+    func parseInfo(response: Any) -> [People]{
         let JSONresponse = response as? [String : Any]
         
         let data = JSONresponse?["data"] as? [String : Any]
@@ -54,6 +53,6 @@ class Parser {
             
             peopleArray.append(person)
         }
-        tableViewController.loadPeople(sentPeople: peopleArray)
+       return peopleArray
     }
 }

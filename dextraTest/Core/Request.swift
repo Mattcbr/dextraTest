@@ -9,7 +9,14 @@
 import Foundation
 import Alamofire
 
+protocol RequestDelegate: class{
+    func didLoadPeople(people: [People])
+    func didFailToLoadPeople(withError error: Error)
+}
+
 class Request {
+    
+    weak var delegate: RequestDelegate?
     
     func requestInfo() {
         
@@ -29,9 +36,12 @@ class Request {
             switch response.result{
             
             case .success(let JSON):
-                p.parseInfo(response: JSON)
+                let peopleArray = p.parseInfo(response: JSON)
+                self.delegate?.didLoadPeople(people: peopleArray)
+//                self?.delegate?.didLoadPeople(people: peopleArray)
+//                p.parseInfo(response: JSON)
             case .failure(let error):
-                print("Falhou com erro: \(error)")
+                self.delegate?.didFailToLoadPeople(withError: error)
             }
         }
     }

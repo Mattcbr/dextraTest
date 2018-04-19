@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PeopleTableViewController: UITableViewController {
+class PeopleTableViewController: UITableViewController, RequestDelegate {
     
     var peopleArray: [People]? {
         didSet {
@@ -16,9 +16,11 @@ class PeopleTableViewController: UITableViewController {
         }
     }
     
+    let r = Request()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let r =  Request()
+        r.delegate = self
         r.requestInfo()
     }
 
@@ -34,7 +36,7 @@ class PeopleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return peopleArray?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,12 +47,27 @@ class PeopleTableViewController: UITableViewController {
 
         let person = peopleArray?[indexPath.row]
         cell.personNameLabel.text = person?.name
-
+        let repoText: String
+        
+        if (person?.repoCount == 0){
+            repoText = "Usuário sem repositórios"
+        } else if (person?.repoCount == 1) {
+            repoText = "1 repositório"
+        } else {
+            repoText = "\((person?.repoCount)!) repositórios"
+        }
+        
+        cell.repoCountLabel.text = repoText
+        
         return cell
     }
 
-    func loadPeople(sentPeople: [People]){
-            peopleArray = sentPeople
+    func didLoadPeople(people: [People]){
+            peopleArray = people
+    }
+    
+    func didFailToLoadPeople(withError error: Error){
+        print("Error \(error)")
     }
     
     /*
