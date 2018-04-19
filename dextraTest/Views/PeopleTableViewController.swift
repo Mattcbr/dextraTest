@@ -17,11 +17,21 @@ class PeopleTableViewController: UITableViewController, RequestDelegate {
             self.tableView.reloadData()
         }
     }
+    //Setting up the search
+    let searchController = UISearchController(searchResultsController: nil)
+    var filteredPeople = [People]()
     
     let r = Request()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Buscar Usuários"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+
         r.delegate = self
         r.requestInfo()
     }
@@ -31,13 +41,32 @@ class PeopleTableViewController: UITableViewController, RequestDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - Search bar functions
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredPeople = (peopleArray?.filter({( person : People) -> Bool in
+            return person.name.lowercased().contains(searchText.lowercased())
+        }))!
+        tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering() {
+            return filteredPeople.count
+        }
         return peopleArray?.count ?? 0
     }
     
@@ -46,22 +75,27 @@ class PeopleTableViewController: UITableViewController, RequestDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PersonTableViewCell else {
             fatalError("Not person table view cell")
         }
-
-        let person = peopleArray?[indexPath.row]
-        cell.personNameLabel.text = person?.name
+        
+        let person: People
+        if isFiltering(){
+            person = filteredPeople[indexPath.row]
+        } else {
+            person = (peopleArray?[indexPath.row])!
+        }
+        cell.personNameLabel.text = person.name
         let repoText: String
         
-        if (person?.repoCount == 0){
+        if (person.repoCount == 0){
             repoText = "Usuário sem repositórios"
-        } else if (person?.repoCount == 1) {
+        } else if (person.repoCount == 1) {
             repoText = "1 repositório"
         } else {
-            repoText = "\((person?.repoCount)!) repositórios"
+            repoText = "\((person.repoCount)) repositórios"
         }
         
         cell.repoCountLabel.text = repoText
         
-        Alamofire.request((person?.thumbnailPath)!).responseImage { response in
+        Alamofire.request((person.thumbnailPath)).responseImage { response in
             print("\nImage Request Response:\n\(response)")
             
             if let image = response.result.value {
@@ -80,49 +114,22 @@ class PeopleTableViewController: UITableViewController, RequestDelegate {
         print("Error \(error)")
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        var selectedIndexPath = self.tableView.indexPathForSelectedRow
+        let destination = segue.destination as! DetailTableViewController
+        
+        let selectedPerson: People = peopleArray![(selectedIndexPath?.row)!]
+        
+        destination.person = selectedPerson
     }
-    */
+}
 
+extension PeopleTableViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
 }
