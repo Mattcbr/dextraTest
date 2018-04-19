@@ -13,11 +13,13 @@ struct People {
     let id: Int
     let name: String
     let thumbnailPath: String
+    let repoCount: Int
     let repositories: [Repositories]
     
-    init(id: Int, name: String, thumbPath: String, repos: [Repositories]) {
+    init(id: Int, name: String, thumbPath: String, repoCount: Int, repos: [Repositories]) {
         self.id   = id
         self.name = name
+        self.repoCount = repoCount
         self.thumbnailPath = thumbPath
         self.repositories = repos
     }

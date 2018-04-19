@@ -9,6 +9,8 @@
 import Foundation
 
 class Parser {
+    let tableViewController = PeopleTableViewController()
+    
     func parseInfo(response: Any){
         let JSONresponse = response as? [String : Any]
         
@@ -33,8 +35,8 @@ class Parser {
             
             //Colects the repositores of this person
             let comics = person["comics"] as? [String: Any]
+            let repoCount = comics?["available"] as? Int
             let repositories = comics?["items"] as? [[String: Any]]
-            
             repositories?.forEach { repository in
                 let repoName = repository["name"] as? String
                 let repoPath = repository["resourceURI"] as? String
@@ -47,9 +49,11 @@ class Parser {
             let person = People(id: id!,
                                 name: name!,
                                 thumbPath: thumbpath,
+                                repoCount: repoCount!,
                                 repos: repoArray)
             
             peopleArray.append(person)
         }
+        tableViewController.loadPeople(sentPeople: peopleArray)
     }
 }
