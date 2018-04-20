@@ -23,6 +23,12 @@ class DetailTableViewController: UITableViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        if person.repoCount == 0 {
+            showAlert()
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -58,11 +64,12 @@ class DetailTableViewController: UITableViewController {
         destination.repo = selectedRepo
     }
     
-    func showAlert(){
-        let alert = UIAlertController(title: "My Alert", message: "This is an alert.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-            NSLog("The \"OK\" alert occured.")
+    @IBAction func showAlert(){
+        let alert = UIAlertController(title: "Usuário sem repositórios", message: "O usuário selecionado não possui repositórios", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Voltar", comment: "Default action"), style: .default, handler: { _ in
+            _ = self.navigationController?.popViewController(animated: true)
         }))
+        
         self.present(alert, animated: true, completion: nil)
     }
 }
