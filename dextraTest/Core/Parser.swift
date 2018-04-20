@@ -22,8 +22,7 @@ class Parser {
             //Array to save repositories of each person
             var repoArray = [Repositories]()
             
-            //Colects name and id of each person
-            let id = person["id"] as? Int
+            //Colects name of each person
             let name = person["name"] as? String
             
             //Colects the image path for each person
@@ -45,8 +44,7 @@ class Parser {
             }
             
             //Creates a person and saves it in an array of people
-            let person = People(id: id!,
-                                name: name!,
+            let person = People(name: name!,
                                 thumbPath: thumbpath,
                                 repoCount: repoCount!,
                                 repos: repoArray)

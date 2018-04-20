@@ -38,7 +38,6 @@ class PeopleTableViewController: UITableViewController, RequestDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Search bar functions
@@ -47,7 +46,6 @@ class PeopleTableViewController: UITableViewController, RequestDelegate {
     }
     
     func searchBarIsEmpty() -> Bool {
-        // Returns true if the text is empty or nil
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
@@ -85,6 +83,7 @@ class PeopleTableViewController: UITableViewController, RequestDelegate {
         cell.personNameLabel.text = person.name
         let repoText: String
         
+        //Personalizing the repository count label
         if (person.repoCount == 0){
             repoText = "Usuário sem repositórios"
         } else if (person.repoCount == 1) {
@@ -95,6 +94,7 @@ class PeopleTableViewController: UITableViewController, RequestDelegate {
         
         cell.repoCountLabel.text = repoText
         
+        //Loading images
         Alamofire.request((person.thumbnailPath)).responseImage { response in
             print("\nImage Request Response:\n\(response)")
             
@@ -110,13 +110,19 @@ class PeopleTableViewController: UITableViewController, RequestDelegate {
             peopleArray = people
     }
     
+    // MARK: - Error Handling
     func didFailToLoadPeople(withError error: Error){
-        print("Error \(error)")
+        
+        let alert = UIAlertController(title: "Erro ao carregar usuários", message: "\(error)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Voltar", comment: "Default action"), style: .default, handler: { _ in
+            print("Error \(error)")
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var selectedIndexPath = self.tableView.indexPathForSelectedRow
         let destination = segue.destination as! DetailTableViewController

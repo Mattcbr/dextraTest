@@ -10,6 +10,7 @@ import UIKit
 
 class AvailabilityViewController: UIViewController {
 
+    //Creating variables
     var repo = Repositories(name: "", path: "")
     @IBOutlet weak var availabilityLabel: UILabel!
     @IBOutlet weak var openInTheNavigatorButton: UIButton!
@@ -17,16 +18,16 @@ class AvailabilityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Showing a message
         let labelText = "\(repo.name)\n\nRepositório Disponível em:\n\(repo.path)"
         availabilityLabel.text = labelText
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    //Handle the button pressing
     @IBAction func buttonPressed(_ sender: Any) {
         if let url = NSURL(string:repo.path) {
             UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)

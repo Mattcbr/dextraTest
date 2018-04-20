@@ -10,7 +10,8 @@ import UIKit
 
 class DetailTableViewController: UITableViewController {
 
-    var person = People(id: 0, name: "", thumbPath: "", repoCount: 0, repos: [Repositories]()) {
+    //Object that is going to be detailed
+    var person = People(name: "", thumbPath: "", repoCount: 0, repos: [Repositories]()) {
         didSet{
             self.tableView.reloadData()
         }
@@ -18,6 +19,7 @@ class DetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //If the person does not have any repositories, show an alert
         if person.repoCount == 0 {
             showAlert()
         }
@@ -42,7 +44,6 @@ class DetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return person.repoCount
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "DetailTableViewCell"
@@ -52,9 +53,9 @@ class DetailTableViewController: UITableViewController {
         cell.repoNameLabel.text = person.repositories[indexPath.row].name
         return cell
     }
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var selectedIndexPath = self.tableView.indexPathForSelectedRow
         let destination = segue.destination as! AvailabilityViewController
@@ -63,6 +64,8 @@ class DetailTableViewController: UITableViewController {
         
         destination.repo = selectedRepo
     }
+    
+    // MARK: - Alert Creation
     
     @IBAction func showAlert(){
         let alert = UIAlertController(title: "Usuário sem repositórios", message: "O usuário selecionado não possui repositórios", preferredStyle: .alert)

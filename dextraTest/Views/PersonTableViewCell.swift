@@ -10,18 +10,16 @@ import UIKit
 
 class PersonTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var repoCountLabel: UILabel!
-    @IBOutlet weak var personImage: UIImageView!
-    @IBOutlet weak var personNameLabel: UILabel!
+    //Creating outlets
+    @IBOutlet weak var repoCountLabel: UILabel!     //Label refers to the user's amount of repositories
+    @IBOutlet weak var personImage: UIImageView!    //Image view refers to the user's picture
+    @IBOutlet weak var personNameLabel: UILabel!    //Label refers to the user's name
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
 }

@@ -38,8 +38,6 @@ class Request {
             case .success(let JSON):
                 let peopleArray = p.parseInfo(response: JSON)
                 self.delegate?.didLoadPeople(people: peopleArray)
-//                self?.delegate?.didLoadPeople(people: peopleArray)
-//                p.parseInfo(response: JSON)
             case .failure(let error):
                 self.delegate?.didFailToLoadPeople(withError: error)
             }
