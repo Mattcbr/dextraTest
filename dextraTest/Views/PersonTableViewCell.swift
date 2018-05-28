@@ -14,6 +14,7 @@ class PersonTableViewCell: UITableViewCell {
     @IBOutlet weak var repoCountLabel: UILabel!     //Label refers to the user's amount of repositories
     @IBOutlet weak var personImage: UIImageView!    //Image view refers to the user's picture
     @IBOutlet weak var personNameLabel: UILabel!    //Label refers to the user's name
+    @IBOutlet weak var imageLoadingView: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

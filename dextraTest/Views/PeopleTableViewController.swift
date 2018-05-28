@@ -15,12 +15,14 @@ class PeopleTableViewController: UITableViewController, RequestDelegate {
     var peopleArray: [People]? {
         didSet {
             self.tableView.reloadData()
+            loadingIndicator.stopAnimating()
         }
     }
     //Setting up the search
     let searchController = UISearchController(searchResultsController: nil)
     var filteredPeople = [People]()
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     let r = Request()
     
     override func viewDidLoad() {
@@ -31,7 +33,9 @@ class PeopleTableViewController: UITableViewController, RequestDelegate {
         searchController.searchBar.placeholder = "Buscar Usuários"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-
+        loadingIndicator.startAnimating()
+        
+        
         r.delegate = self
         r.requestInfo()
     }
@@ -95,11 +99,13 @@ class PeopleTableViewController: UITableViewController, RequestDelegate {
         cell.repoCountLabel.text = repoText
         
         //Loading images
+        cell.imageLoadingView.startAnimating()
         Alamofire.request((person.thumbnailPath)).responseImage { response in
             print("\nImage Request Response:\n\(response)")
             
             if let image = response.result.value {
                 cell.personImage.image = image
+                cell.imageLoadingView.stopAnimating()
             }
         }
         
